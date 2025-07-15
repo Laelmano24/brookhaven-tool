@@ -15,7 +15,7 @@ Esse comando faz o seguinte:
 
 ## 🛠️ Funcionalidades
 
-**teleport e teleportToPlayer**
+**teleport, teleportVehicle e teleportToPlayer**
 
 📌 Sintaxe do teleport:
 ```lua
@@ -29,12 +29,26 @@ brookhavenTool:teleport(position)
 ✅ Exemplo de uso:
 
 ```lua
-brookhavenTool:teleport(Vector3.new(100, 100, 100))
+brookhavenTool:teleportVehicle(Vector3.new(100, 100, 100))
+```
+
+```lua
+brookhavenTool:teleportVehicle(position)
+```
+
+🔍 Argumentos:
+
+- positon (Vector3): Um vector3, esse vector3 vai ser a posição dos exios x,y,z
+
+✅ Exemplo de uso:
+
+```lua
+brookhavenTool:teleportVehicle(Vector3.new(100, 100, 100))
 ```
 
 📌 Sintaxe:
 ```lua
-brookhavenTool:teleportToPlayer(playerName)
+brookhavenTool:teleportToPlayer(targetName)
 ```
 
 🔍 Argumentos:
@@ -47,17 +61,32 @@ brookhavenTool:teleportToPlayer(playerName)
 brookhavenTool:teleportToPlayer("Laelmano24")
 ```
 
+**spectatePlayer**
+
+📌 Sintaxe:
+```lua
+brookhavenTool:spectatePlayer({state, targetName})
+```
+
+🔍 Args da tabela:
+
+- state (boolean): Se true, inicia o espectador. Se false, para de espectar.
+- playerName (string): Nome exato do jogador que você deseja espectar.
+
+✅ Exemplo de uso:
+
+```lua
+brookhavenTool:spectatePlayer({true, "Laelmano24"})
+```
 
 **removeBanHouses e autoRemoveBanHouses**
 
-📌 Sintaxe do teleport:
+📌 Sintaxe do removeBanHouses:
 ```lua
 brookhavenTool:removeBanHouses()
 ```
 
-🔍 Observação: Só execute a função, cara.
-
-📌 Sintaxe:
+📌 Sintaxe do autoRemoveBanHouses:
 ```lua
 brookhavenTool:autoRemoveBanHouses(state)
 ```
@@ -72,22 +101,28 @@ brookhavenTool:autoRemoveBanHouses(state)
 brookhavenTool:autoRemoveBanHouses(true) --Ativar o autoRemoveBanHouse
 ```
 
-**spectatePlayer**
+**checkPlayerSittingCar**
 
 📌 Sintaxe:
 ```lua
-brookhavenTool:spectatePlayer({state, playerName})
+brookhavenTool:checkPlayerSittingCar({targetName, nameVehicle, onlyVehicleSeat})
 ```
 
 🔍 Args da tabela:
 
-- state (boolean): Se true, inicia o espectador. Se false, para de espectar.
-- playerName (string): Nome exato do jogador que você deseja espectar.
+- namePlayer (string): O nome do usuario que você quer verificar.
+- playerName (string): o nome do veiculo do usuario.
+- onlyVehicleSeat (boolean): O valor true é para verificar apenas o assento do piloto, caso seja false é para todos os assentos do veiculo.
 
 ✅ Exemplo de uso:
 
 ```lua
-brookhavenTool:spectatePlayer({true, "Laelmano24"})
+brookhavenTool:checkPlayerSittingCar({"SlaPow2025", "Laelmano24", false}) -- Saida: true
+--Verificar se o usuario "SlaPow2025" está sentado no veiculo do "Laelmano24"
+
+brookhavenTool:checkPlayerSittingCar({"SlaPow2025", "Laelmano24", true}) -- Saida: true
+--Verificar se o usuario "SlaPow2025" está apenas sentado no VehicleSeat (assento do piloto) do veiculo do "Laelmano24"
+
 ```
 
 ⚠️ Aviso
