@@ -1,3 +1,4 @@
+local TextService = game:GetService("TextService")
 local modules = {}
 local Players = game.Players
 local Camera = workspace.CurrentCamera
@@ -13,6 +14,28 @@ shared.connectCharacter = LocalPlayer.CharacterAdded:Connect(function(newCharact
     HumanoidRootPart = newCharacter:WaitForChild("HumanoidRootPart")
 end)
 
+function modules:teleport(position: Vector3)
+    HumanoidRootPart.CFrame = CFrame.new(position)
+end
+
+function modules:teleportToPlayer(targetName: string)
+
+    local function infoErro(text: string)
+        return warn("[teleportToPlayer Error] " .. text)
+    end
+
+    if not targetName then return infoErro("Coloque o nome do jogador") end
+
+    local targetPlayer = Players:FindFirstChild(targetName)
+    local targetCharacter = (targetPlayer and (targetPlayer.Character or targetPlayer.CharacterAdded:Wait())) or nil
+    if not targetPlayer or not targetCharacter then return infoErro("O target não existe") end
+
+    local targetRootPart = targetCharacter:FindFirstChild("HumanoidRootPart")
+    if not targetRootPart then return infoErro("O HumanoidRootPart do target não existe") end
+
+    modules:teleport(targetRootPart.Position)
+end
+
 function modules:spectatePlayer(tableinfo: table)
 
     local value = tableinfo.value or tableinfo[1]
@@ -26,7 +49,7 @@ function modules:spectatePlayer(tableinfo: table)
 
     local function infoErro(text: string)
         Camera.CameraSubject = Humanoid
-        warn("[Error] " .. text)
+        warn("[spectatePlayer Error] " .. text)
     end
 
     local targetPlayer = Players:FindFirstChild(targetName)

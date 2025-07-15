@@ -6,7 +6,7 @@ A ferramenta permite você usar funcionalidades prontas para o seu script de bro
 ## 📦 Codigo de importação
 
 ```lua
-local brookhavenTool = loadstring(game:HttpGet("https://raw.githubusercontent.com/Laelmano24/brookhaven-tool/refs/heads/main/main.luau"))()
+local brookhavenTool = loadstring(game:HttpGet("https://raw.githubusercontent.com/Laelmano24/brookhaven-tool/refs/heads/main/src/main.luau"))()
 ```
 
 Esse comando faz o seguinte:
@@ -15,16 +15,50 @@ Esse comando faz o seguinte:
 
 ## 🛠️ Funcionalidades
 
+**teleport e teleportToPlayer**
+
+📌 Sintaxe do teleport:
+```lua
+brookhavenTool:teleport(position)
+```
+
+🔍 Argumentos:
+
+- positon (Vector3): Um vector3, esse vector3 vai ser a posição dos exios x,y,z
+
+✅ Exemplo de uso:
+
+```lua
+brookhavenTool:teleport(Vector3.new(100, 100, 100))
+```
+
+**teleportToPlayer**
+
+📌 Sintaxe:
+```lua
+brookhavenTool:teleportToPlayer(playerName)
+```
+
+🔍 Argumentos:
+
+- playerName (string): Nome do usuario que você quer teleportar.
+
+✅ Exemplo de uso:
+
+```lua
+brookhavenTool:teleportToPlayer("Laelmano24")
+```
+
 **spectatePlayer**
 
 📌 Sintaxe:
 ```lua
-brookhavenTool:spectatePlayer({isActive, playerName})
+brookhavenTool:spectatePlayer({state, playerName})
 ```
 
-🔍 Parâmetros:
+🔍 Args da tabela:
 
-- isActive (boolean): Se true, inicia o espectador. Se false, para de espectar.
+- state (boolean): Se true, inicia o espectador. Se false, para de espectar.
 - playerName (string): Nome exato do jogador que você deseja espectar.
 
 ✅ Exemplo de uso:
