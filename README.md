@@ -5,7 +5,7 @@ A ferramenta permite você usar funcionalidades prontas para o seu script de bro
 
 ## 📦 Codigo de importação
 
-```
+```lua
 local brookhavenTool = loadstring(game:HttpGet("https://raw.githubusercontent.com/Laelmano24/brookhaven-tool/refs/heads/main/main.luau"))()
 ```
 
