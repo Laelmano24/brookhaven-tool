@@ -32,8 +32,6 @@ brookhavenTool:teleport(position)
 brookhavenTool:teleport(Vector3.new(100, 100, 100))
 ```
 
-**teleportToPlayer**
-
 📌 Sintaxe:
 ```lua
 brookhavenTool:teleportToPlayer(playerName)
@@ -47,6 +45,31 @@ brookhavenTool:teleportToPlayer(playerName)
 
 ```lua
 brookhavenTool:teleportToPlayer("Laelmano24")
+```
+
+
+**removeBanHouses e autoRemoveBanHouses**
+
+📌 Sintaxe do teleport:
+```lua
+brookhavenTool:removeBanHouses()
+```
+
+🔍 Observação: Só execute a função, cara.
+
+📌 Sintaxe:
+```lua
+brookhavenTool:autoRemoveBanHouses(state)
+```
+
+🔍 Argumentos:
+
+- state (boolean): O valor true é para ativado e false é para desativado.
+
+✅ Exemplo de uso:
+
+```lua
+brookhavenTool:autoRemoveBanHouses(true) --Ativar o autoRemoveBanHouse
 ```
 
 **spectatePlayer**

@@ -1,4 +1,3 @@
-local TextService = game:GetService("TextService")
 local modules = {}
 local Players = game.Players
 local Camera = workspace.CurrentCamera
@@ -6,6 +5,8 @@ local LocalPlayer = Players.LocalPlayer
 local Character = LocalPlayer.Character or LocalPlayer.CharacterAdded:Wait()
 local Humanoid = Character:WaitForChild("Humanoid")
 local HumanoidRootPart = Character:WaitForChild("HumanoidRootPart")
+
+local Houses = workspace["001_Lots"]
 
 if shared.connectCharacter then shared.connectCharacter:Disconnect() end
 shared.connectCharacter = LocalPlayer.CharacterAdded:Connect(function(newCharacter)
@@ -69,6 +70,32 @@ function modules:spectatePlayer(tableinfo: table)
         Camera.CameraSubject = targetHumanoid
         task.wait()
     end
+end
+
+function modules:removeBanHouses()
+    
+    for _, house in ipairs(Houses:GetChildren()) do
+        if house.Name ~= "For Sale" then
+            local bannedPart = house:FindFirstChild("BannedBlock", true)
+            if bannedPart then bannedPart:Destroy() end
+        end
+    end
+
+end
+
+function modules:autoRemoveBanHouses(value: boolean)
+
+    if value == nil then return warn("[autoRemoveBanHouses Error] Ensira o valor de ativação") end
+
+    getgenv().autoRemoveBanHouses = value
+
+    if not getgenv().autoRemoveBanHouses then return end
+
+    while getgenv().autoRemoveBanHouses do
+        modules:removeBanHouses()
+        task.wait(0.1)
+    end
+
 end
 
 return modules
