@@ -48,4 +48,4 @@ function modules:spectatePlayer(tableinfo: table)
     end
 end
 
-modules:spectatePlayer({true, "brunet26"})
+return modules
