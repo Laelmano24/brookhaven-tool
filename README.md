@@ -5,9 +5,9 @@ A ferramenta permite você usar funcionalidades prontas para o seu script de bro
 
 ## 📦 Codigo de importação
 
-´´´lua
+```
 local brookhavenTool = loadstring(game:HttpGet("https://raw.githubusercontent.com/Laelmano24/brookhaven-tool/refs/heads/main/main.luau"))()
-´´´
+```
 
 Esse comando faz o seguinte:
 - Baixa o script principal diretamente do GitHub.
@@ -18,9 +18,9 @@ Esse comando faz o seguinte:
 **spectatePlayer**
 
 📌 Sintaxe:
-´´´lua
+```lua
 brookhavenTool:spectatePlayer({isActive, playerName})
-´´´
+```
 
 🔍 Parâmetros:
 
@@ -29,9 +29,9 @@ brookhavenTool:spectatePlayer({isActive, playerName})
 
 ✅ Exemplo de uso:
 
-´´´lua
+```lua
 brookhavenTool:spectatePlayer({false, "Laelmano24"})
-´´´
+```
 
 ⚠️ Aviso
 
