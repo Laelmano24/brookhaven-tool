@@ -169,7 +169,7 @@ function modules:teleportVehicle(position: Vector3)
         end
     end
 
-    infoErro("Você não está sentado em nenhum veiculo")
+    infoErro("Você não está sentado no VehicleSeat do veiculo")
     return false
 end
 
