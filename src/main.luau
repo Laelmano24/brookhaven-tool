@@ -1,6 +1,7 @@
 local modules = {}
 local configs = getgenv().brookhavenTollConfig or {}
-local logsError = configs.logsError or true
+local logsError = configs.logsError
+if logsError == nil then logsError = true end
 
 local Players = game.Players
 local Camera = workspace.CurrentCamera
