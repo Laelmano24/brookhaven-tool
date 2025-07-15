@@ -24,13 +24,13 @@ brookhavenTool:spectatePlayer({isActive, playerName})
 
 🔍 Parâmetros:
 
-- isActive (boolean): Se false, inicia o espectador. Se true, para de espectar.
+- isActive (boolean): Se true, inicia o espectador. Se false, para de espectar.
 - playerName (string): Nome exato do jogador que você deseja espectar.
 
 ✅ Exemplo de uso:
 
 ```lua
-brookhavenTool:spectatePlayer({false, "Laelmano24"})
+brookhavenTool:spectatePlayer({true, "Laelmano24"})
 ```
 
 ⚠️ Aviso
