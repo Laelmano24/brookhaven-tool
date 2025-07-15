@@ -1,133 +1,127 @@
 # 🧰 Brookhaven Tool - Roblox Script
 
-Este repositório contém uma ferramenta personalizada para o jogo Brookhaven 🏡RP, criada em Luau (linguagem usada no Roblox). 
-A ferramenta permite você usar funcionalidades prontas para o seu script de brookhaven.
+Este repositório contém uma ferramenta personalizada para o jogo **Brookhaven 🏡RP**, desenvolvida em **Luau** (linguagem usada no Roblox).  
+Ela oferece funcionalidades prontas para facilitar a criação de scripts no Brookhaven.
 
-## 📦 Codigo de importação
+---
+
+## 📦 Código de Importação
 
 ```lua
 local brookhavenTool = loadstring(game:HttpGet("https://raw.githubusercontent.com/Laelmano24/brookhaven-tool/refs/heads/main/src/main.luau"))()
 ```
 
 Esse comando faz o seguinte:
+
 - Baixa o script principal diretamente do GitHub.
 - Executa o script e retorna um objeto com funções utilitárias.
 
+---
+
 ## 🛠️ Funcionalidades
 
-**teleport, teleportVehicle e teleportToPlayer**
+### 📍 teleport, teleportVehicle e teleportToPlayer
 
-📌 Sintaxe do teleport:
+#### 🧭 teleport
 ```lua
 brookhavenTool:teleport(position)
 ```
 
-🔍 Argumentos:
+- `position` (Vector3): A posição de destino (eixos X, Y, Z).
 
-- positon (Vector3): Um vector3, esse vector3 vai ser a posição dos exios x,y,z
-
-✅ Exemplo de uso:
-
-```lua
-brookhavenTool:teleportVehicle(Vector3.new(100, 100, 100))
-```
-
+#### 🧭 teleportVehicle
 ```lua
 brookhavenTool:teleportVehicle(position)
 ```
 
-🔍 Argumentos:
+- `position` (Vector3): A posição de destino do veículo.
 
-- positon (Vector3): Um vector3, esse vector3 vai ser a posição dos exios x,y,z
-
-✅ Exemplo de uso:
-
+**Exemplo:**
 ```lua
 brookhavenTool:teleportVehicle(Vector3.new(100, 100, 100))
 ```
 
-📌 Sintaxe:
+#### 🧭 teleportToPlayer
 ```lua
-brookhavenTool:teleportToPlayer(targetName)
+brookhavenTool:teleportToPlayer(playerName)
 ```
 
-🔍 Argumentos:
+- `playerName` (string): Nome do jogador para o qual deseja teleportar.
 
-- playerName (string): Nome do usuario que você quer teleportar.
-
-✅ Exemplo de uso:
-
+**Exemplo:**
 ```lua
 brookhavenTool:teleportToPlayer("Laelmano24")
 ```
 
-**spectatePlayer**
+---
 
-📌 Sintaxe:
+### 🎥 spectatePlayer
+
 ```lua
-brookhavenTool:spectatePlayer({state, targetName})
+brookhavenTool:spectatePlayer({state, playerName})
 ```
 
-🔍 Args da tabela:
+- `state` (boolean): `true` para começar a espectar, `false` para parar.
+- `playerName` (string): Nome do jogador que será espectado.
 
-- state (boolean): Se true, inicia o espectador. Se false, para de espectar.
-- playerName (string): Nome exato do jogador que você deseja espectar.
-
-✅ Exemplo de uso:
-
+**Exemplo:**
 ```lua
 brookhavenTool:spectatePlayer({true, "Laelmano24"})
 ```
 
-**removeBanHouses e autoRemoveBanHouses**
+---
 
-📌 Sintaxe do removeBanHouses:
+### 🚫 removeBanHouses e autoRemoveBanHouses
+
+#### 🔹 removeBanHouses
 ```lua
 brookhavenTool:removeBanHouses()
 ```
 
-📌 Sintaxe do autoRemoveBanHouses:
+#### 🔹 autoRemoveBanHouses
 ```lua
 brookhavenTool:autoRemoveBanHouses(state)
 ```
 
-🔍 Argumentos:
+- `state` (boolean): `true` para ativar, `false` para desativar.
 
-- state (boolean): O valor true é para ativado e false é para desativado.
-
-✅ Exemplo de uso:
-
+**Exemplo:**
 ```lua
-brookhavenTool:autoRemoveBanHouses(true) --Ativar o autoRemoveBanHouse
+brookhavenTool:autoRemoveBanHouses(true) -- Ativa o autoRemoveBanHouses
 ```
 
-**checkPlayerSittingCar**
+---
 
-📌 Sintaxe:
+### 🚗 checkPlayerSittingCar
+
 ```lua
 brookhavenTool:checkPlayerSittingCar({targetName, nameVehicle, onlyVehicleSeat})
 ```
 
-🔍 Args da tabela:
+- `targetName` (string): Nome do jogador que você quer verificar.
+- `nameVehicle` (string): Nome do jogador dono do veículo.
+- `onlyVehicleSeat` (boolean): `true` para verificar apenas o assento do piloto, `false` para verificar todos os assentos.
 
-- namePlayer (string): O nome do usuario que você quer verificar.
-- playerName (string): o nome do veiculo do usuario.
-- onlyVehicleSeat (boolean): O valor true é para verificar apenas o assento do piloto, caso seja false é para todos os assentos do veiculo.
-
-✅ Exemplo de uso:
-
+**Exemplos:**
 ```lua
-brookhavenTool:checkPlayerSittingCar({"SlaPow2025", "Laelmano24", false}) -- Saida: true
---Verificar se o usuario "SlaPow2025" está sentado no veiculo do "Laelmano24"
+brookhavenTool:checkPlayerSittingCar({"SlaPow2025", "Laelmano24", false})
+-- Verifica se o jogador "SlaPow2025" está em qualquer assento do veículo do "Laelmano24"
 
-brookhavenTool:checkPlayerSittingCar({"SlaPow2025", "Laelmano24", true}) -- Saida: true
---Verificar se o usuario "SlaPow2025" está apenas sentado no VehicleSeat (assento do piloto) do veiculo do "Laelmano24"
-
+brookhavenTool:checkPlayerSittingCar({"SlaPow2025", "Laelmano24", true})
+-- Verifica se o jogador "SlaPow2025" está no assento do piloto do veículo do "Laelmano24"
 ```
 
-⚠️ Aviso
+---
 
-Este script é feito para fins educacionais e experimentais. O uso de scripts de terceiros pode violar os Termos de Serviço da Roblox, podendo resultar em banimento. Use por sua conta e risco.
+⚠️ **Aviso**
 
-🛠 Autor
-Laelmano24 - https://github.com/Laelmano24
+Este script é feito para fins educacionais e experimentais.  
+O uso de scripts de terceiros pode violar os Termos de Serviço da Roblox, podendo resultar em banimento.  
+Use por sua conta e risco.
+
+---
+
+## 🛠 Autor
+
+**Laelmano24**  
+[GitHub](https://github.com/Laelmano24)
