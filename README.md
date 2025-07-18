@@ -111,10 +111,10 @@ brookhavenTool:checkPlayerSittingCar({"SlaPow2025", "Laelmano24", true})
 -- Verifica se o jogador "SlaPow2025" está no assento do piloto do veículo do "Laelmano24"
 ```
 
-### 🚗 getIdpAccessoriesPlayer
+### 🚗 getIdAccessoriesPlayer
 
 ```lua
-brookhavenTool:getIdpAccessoriesPlayer({targetName, nameVehicle, onlyVehicleSeat})
+brookhavenTool:getIdAccessoriesPlayer({targetName, nameVehicle, onlyVehicleSeat})
 ```
 
 - `targetName` (string): Nome do jogador que você querer copiar.
@@ -122,10 +122,10 @@ brookhavenTool:getIdpAccessoriesPlayer({targetName, nameVehicle, onlyVehicleSeat
 
 **Exemplos:**
 ```lua
-brookhavenTool:getIdpAccessoriesPlayer("Laelmano24", "brookhaven")
+brookhavenTool:getIdAccessoriesPlayer("Laelmano24", "brookhaven")
 -- O segundo valor vai copiar a skin do brookhaven do usuario.
 
-brookhavenTool:getIdpAccessoriesPlayer("Laelmano24", "roblox")
+brookhavenTool:getIdAccessoriesPlayer("Laelmano24", "roblox")
 -- O segundo valor vai copiar a skin do perfil da roblox do usuario.
 ```
 

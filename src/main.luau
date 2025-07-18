@@ -174,7 +174,7 @@ function modules:teleportVehicle(position: Vector3)
     return false
 end
 
-function modules:getIdpAccessoriesPlayer(targetName: string, typeCopy: string)
+function modules:getIdAccessoriesPlayer(targetName: string, typeCopy: string)
 
     local function infoErro(text: string)
         if logsError then return warn("[getIdpAccessoriesPlayers Error] " .. text) end
