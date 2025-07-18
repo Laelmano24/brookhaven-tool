@@ -53,19 +53,19 @@ end
 
 function modules:spectatePlayer(tableinfo: table)
 
-    local value = tableinfo.value or tableinfo[1]
-    local targetName = tableinfo.targetName or tableinfo[2]
-
-    if not value or not targetName then print("Tem valores que não foram passado") end
-
-    getgenv().spectatePlayer = value
-
-    if not getgenv().spectatePlayer then Camera.CameraSubject = Humanoid end
-
     local function infoErro(text: string)
         Camera.CameraSubject = Humanoid
-        if logsError then return warn("[spectatePlayer Error] " .. text) end
+        if logsError then warn("[spectatePlayer Error] " .. text) if callback then callback() end return end
     end
+
+    local value = tableinfo.value or tableinfo[1]
+    local targetName = tableinfo.targetName or tableinfo[2]
+    local callback = tableinfo.callback or tableinfo[3]
+    
+    getgenv().spectatePlayer = value
+    
+    if not getgenv().spectatePlayer then Camera.CameraSubject = Humanoid end
+    if not targetName then infoErro("Tem valores que não foram passado") end
 
     local targetPlayer = Players:FindFirstChild(targetName)
     local targetCharacter = (targetPlayer and (targetPlayer.Character or targetPlayer.CharacterAdded:Wait())) or nil
@@ -77,9 +77,17 @@ function modules:spectatePlayer(tableinfo: table)
     while getgenv().spectatePlayer do
         
         local targetPlayer = Players:FindFirstChild(targetName)
-        local targetHumanoid = targetCharacter:FindFirstChild("Humanoid")
+        local targetCharacter = (targetPlayer and targetPlayer.Character) or nil
+        local targetHumanoid = (targetCharacter and targetCharacter:FindFirstChild("Humanoid")) or nil
 
-        if not targetPlayer and not targetHumanoid then return infoErro("Alvo do target deixou de existir") end
+        if not targetPlayer then
+            return infoErro("O target não existe")
+        end
+
+        if not targetCharacter or not targetHumanoid then
+            task.wait()
+            continue
+        end
 
         Camera.CameraSubject = targetHumanoid
         task.wait()

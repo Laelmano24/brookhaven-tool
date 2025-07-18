@@ -1,5 +1,5 @@
 local redzlib = loadstring(game:HttpGet("https://raw.githubusercontent.com/tlredz/Library/refs/heads/main/V5/Source.lua"))()
-local brookhavenTool = loadstring(game:HttpGet("https://raw.githubusercontent.com/Laelmano24/brookhaven-tool/refs/heads/main/src/main.luau"))()
+--local brookhavenTool = loadstring(game:HttpGet("https://raw.githubusercontent.com/Laelmano24/brookhaven-tool/refs/heads/main/src/main.luau"))()
 
 local Window = redzlib:MakeWindow({
     Title = "RH Hub",
@@ -55,7 +55,31 @@ Main:AddButton({"Atualizar lista", function()
   UptadePlayers()
 end})
 
-Main:AddButton({"Copiar skin", function()
-  print("Está funcionado a função")
-end})
+Main:AddToggle({
+  Name = "Spectar jogador",
+  Description = "",
+  Flag = "",
+  Callback = function(value)
+    
+    modules:spectatePlayer({value, playerValue})
+    
+  end
+})
 
+Main:AddButton({"Copiar skin", function()
+
+    local function montarAvatar(nomeDoJogador)
+        local ids = modules:getIdAccessoriesPlayer(nomeDoJogador)
+        local remoteFunction = game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Wear")
+        for _, id in ipairs(ids) do
+            remoteFunction:InvokeServer(tonumber(id))
+        end
+    end
+
+    montarAvatar(LocalPlayer.Name)
+
+    task.wait(0.2)
+
+    montarAvatar(playerValue)
+
+end})
