@@ -111,10 +111,10 @@ brookhavenTool:checkPlayerSittingCar({"SlaPow2025", "Laelmano24", true})
 -- Verifica se o jogador "SlaPow2025" está no assento do piloto do veículo do "Laelmano24"
 ```
 
-### 🚗 getIdAccessoriesPlayer
+### 👘 getIdAccessoriesPlayer
 
 ```lua
-brookhavenTool:getIdAccessoriesPlayer({targetName, nameVehicle, onlyVehicleSeat})
+brookhavenTool:getIdAccessoriesPlayer(targetName, typeCopy)
 ```
 
 - `targetName` (string): Nome do jogador que você querer copiar.
