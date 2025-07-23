@@ -137,7 +137,6 @@ brookhavenTool:getIdsBodyPlayer(targetName, typeCopy)
 
 - `targetName` (string): Nome do jogador que você querer copiar.
 - `typeCopy` (string): O tipo de copiar, para copiar a skin do brookhaven ou do perfil da roblox.
--  
 
 **Exemplos:**
 ```lua
@@ -146,6 +145,42 @@ brookhavenTool:getIdsBodyPlayer("Laelmano24", "brookhaven")
 
 brookhavenTool:getIdsBodyPlayer("Laelmano24", "roblox")
 -- Ele retorna uma lista de ids do corpo do jogador na ordem do remote que modifica o corpo do personagem, a diferença é que vai pegar do perfil da roblox.
+```
+
+### 👘 getIdsBodyPlayer
+
+```lua
+brookhavenTool:getIdsClothesPlayer(targetName, typeCopy)
+```
+
+- `targetName` (string): Nome do jogador que você querer copiar.
+- `typeCopy` (string): O tipo de copiar, para copiar a skin do brookhaven ou do perfil da roblox.
+
+**Exemplos:**
+```lua
+brookhavenTool:getIdsClothesPlayer("Laelmano24", "brookhaven")
+-- Ele retorna uma lista que o primeiro valor vai ser o id da camisa e segundo valor vai ser o id da calça do brookhaven.
+
+brookhavenTool:getIdsClothesPlayer("Laelmano24", "roblox")
+-- Ele retorna uma lista que o primeiro valor vai ser o id da camisa e segundo valor vai ser o id da calça do perfil do usuario da roblox.
+```
+
+### 👘 getColorPlayer
+
+```lua
+brookhavenTool:getColorPlayer(targetName, typeCopy)
+```
+
+- `targetName` (string): Nome do jogador que você querer copiar.
+- `typeCopy` (string): O tipo de copiar, para copiar a skin do brookhaven ou do perfil da roblox.
+
+**Exemplos:**
+```lua
+brookhavenTool:getColorPlayer("Laelmano24", "brookhaven")
+-- Ele retorna a cor da cabeça do jogador do brookhaven.
+
+brookhavenTool:getColorPlayer("Laelmano24", "roblox")
+-- Ele retorna a cor da cabeça do jogador, mas do perfil da roblox dele. 
 ```
 
 ---

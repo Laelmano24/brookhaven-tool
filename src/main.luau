@@ -268,4 +268,119 @@ function modules:getIdsBodyPlayer(targetName: string, typeCopy: string): {number
 
 end
 
+function modules:getIdsBodyPlayer(targetName: string, typeCopy: string): {number}
+
+    local function infoErro(text: string)
+        if logsError then return warn("[getIdpAccessoriesPlayers Error] " .. text) end
+    end
+
+    if not targetName then return infoErro("Ensira o nome do jogador") end
+    local typeCopyValue = typeCopy or "brookhaven"
+    local targetPlayer = Players:FindFirstChild(targetName)
+    local targetCharacter = (targetPlayer and (targetPlayer.Character or targetPlayer.CharacterAdded:Wait())) or nil
+    if not targetPlayer or not targetCharacter then return infoErro("O target não existe") end
+    
+    local bodyIds = {}
+    local bodyNames = {"Torso", "RightArm", "LeftArm", "RightLeg", "LeftLeg", "Head"}
+    
+    local function construtorID(humanoidDescription: HumanoidDescription)
+        for _, bodyName in ipairs(bodyNames) do
+            if not humanoidDescription[bodyName] then continue end
+            table.insert(bodyIds, humanoidDescription[bodyName])
+        end
+    end
+
+    if typeCopyValue == "roblox" then
+        local targetHumanoidDescription = Players:GetHumanoidDescriptionFromUserId(targetPlayer.UserId)
+        if not targetHumanoidDescription then return infoErro("O HumanoidDescription não existe") end
+
+        construtorID(targetHumanoidDescription)
+        return bodyIds
+    end
+
+    if typeCopyValue ~= "brookhaven" then return infoErro("O arg2 tá invalido") end
+
+    local targetHumanoid = (targetCharacter and targetCharacter:FindFirstChild("Humanoid"))
+    local targetHumanoidDescription = (targetHumanoid and targetHumanoid:FindFirstChild("HumanoidDescription"))
+    if not targetHumanoid or not targetHumanoidDescription then return infoErro("O humanoid ou humanoidDescription não existe") end
+
+    construtorID(targetHumanoidDescription)
+    return bodyIds
+
+end
+
+function modules:getIdsClothesPlayer(targetName: string, typeCopy: string): {number}
+
+    local function infoErro(text: string)
+        if logsError then return warn("[getIdpAccessoriesPlayers Error] " .. text) end
+    end
+
+    if not targetName then return infoErro("Ensira o nome do jogador") end
+    local typeCopyValue = typeCopy or "brookhaven"
+    local targetPlayer = Players:FindFirstChild(targetName)
+    local targetCharacter = (targetPlayer and (targetPlayer.Character or targetPlayer.CharacterAdded:Wait())) or nil
+    if not targetPlayer or not targetCharacter then return infoErro("O target não existe") end
+    
+    local clothesIds = {}
+    local clothesNames = {"Shirt", "Pants"}
+    
+    local function construtorID(humanoidDescription: HumanoidDescription)
+        for _, clothingName in ipairs(clothesNames) do
+            if not humanoidDescription[clothingName] then continue end
+            table.insert(clothesIds, humanoidDescription[clothingName])
+        end
+    end
+
+    if typeCopyValue == "roblox" then
+        local targetHumanoidDescription = Players:GetHumanoidDescriptionFromUserId(targetPlayer.UserId)
+        if not targetHumanoidDescription then return infoErro("O HumanoidDescription não existe") end
+
+        construtorID(targetHumanoidDescription)
+        return clothesIds
+    end
+
+    if typeCopyValue ~= "brookhaven" then return infoErro("O arg2 tá invalido") end
+
+    local targetHumanoid = (targetCharacter and targetCharacter:FindFirstChild("Humanoid"))
+    local targetHumanoidDescription = (targetHumanoid and targetHumanoid:FindFirstChild("HumanoidDescription"))
+    if not targetHumanoid or not targetHumanoidDescription then return infoErro("O humanoid ou humanoidDescription não existe") end
+
+    construtorID(targetHumanoidDescription)
+    return clothesIds
+
+end
+
+function modules:getColorPlayer(targetName: string, typeCopy: string): string
+
+    local function infoErro(text: string)
+        if logsError then return warn("[getIdpAccessoriesPlayers Error] " .. text) end
+    end
+
+    if not targetName then return infoErro("Ensira o nome do jogador") end
+    local typeCopyValue = typeCopy or "brookhaven"
+    local targetPlayer = Players:FindFirstChild(targetName)
+    local targetCharacter = (targetPlayer and (targetPlayer.Character or targetPlayer.CharacterAdded:Wait())) or nil
+    if not targetPlayer or not targetCharacter then return infoErro("O target não existe") end
+
+    if typeCopyValue == "roblox" then
+        local targetHumanoidDescription = Players:GetHumanoidDescriptionFromUserId(targetPlayer.UserId)
+        if not targetHumanoidDescription then return infoErro("O HumanoidDescription não existe") end
+
+        local playerHeadColor: Color3 = targetHumanoidDescription.HeadColor
+        local color3ToBrickColor: string = BrickColor.new(playerHeadColor)
+        return tostring(color3ToBrickColor)
+    end
+
+    if typeCopyValue ~= "brookhaven" then return infoErro("O arg2 tá invalido") end
+
+    local targetHumanoid = (targetCharacter and targetCharacter:FindFirstChild("Humanoid"))
+    local targetHumanoidDescription = (targetHumanoid and targetHumanoid:FindFirstChild("HumanoidDescription"))
+    if not targetHumanoid or not targetHumanoidDescription then return infoErro("O humanoid ou humanoidDescription não existe") end
+
+    local playerHeadColor: Color3 = targetHumanoidDescription.HeadColor
+    local color3ToBrickColor: string = BrickColor.new(playerHeadColor)
+    return tostring(color3ToBrickColor)
+
+end
+
 return modules
