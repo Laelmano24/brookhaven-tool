@@ -203,7 +203,7 @@ function modules:getIdAccessoriesPlayer(targetName: string, typeCopy: string)
             if accessoriesIdsStrings == "" then continue end
             local accessoriesTable = string.split(accessoriesIdsStrings, ",")
             for _, stringId in ipairs(accessoriesTable) do
-                table.insert(accessoriesIds, stringId)
+                table.insert(accessoriesIds, tonumber(stringId))
             end
         end
     end
