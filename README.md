@@ -147,7 +147,7 @@ brookhavenTool:getIdsBodyPlayer("Laelmano24", "roblox")
 -- Ele retorna uma lista de ids do corpo do jogador na ordem do remote que modifica o corpo do personagem, a diferença é que vai pegar do perfil da roblox.
 ```
 
-### 👘 getIdsBodyPlayer
+### 👘 getIdsClothesPlayer
 
 ```lua
 brookhavenTool:getIdsClothesPlayer(targetName, typeCopy)
